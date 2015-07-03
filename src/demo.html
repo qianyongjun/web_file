@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demoOne</title>
+	<style>
+		body{font-family:'Arial';}
+		.demo1{
+			font-size:80px;
+			font-weight:300;
+			color:#000;
+			background:-webkit-gradient(linear,left top,left bottom,from(#283dde),to(#292e22));
+			 background:-moz-linear-gradient(top, #283dde,#292e22);
+			width:400px;
+			position:relative;
+			-webkit-text-fill-color:transparent;
+			-webkit-background-clip:text;
+			margin:0 auto;
+		}
+		.demo1:before{
+			background-position:-150px;
+			content:'FlashWord';
+			animation:bgchange 4s infinite linear;
+			-webkit-animation:bgchange 4s infinite linear;
+			position:absolute;
+			color:#fff;
+			background-image:linear-gradient(65deg,transparent 20%,rgba(255,255,255,0.2) 20%,transparent 40%,rgba(255,255,255,0.3) 40%);
+			 -webkit-text-fill-color: transparent;
+			 -webkit-background-clip: text;
+		}
+		.demo1:after{
+			content:'FlashWord';
+			text-shadow:0 1px #dfdfdf,0 2px #dfdfdf,0 3px #dfdfdf,0 4px #dfdfdf,0 5px #dfdfdf;
+			color:#fff;
+			position:absolute;
+			left:0;
+			top:0;
+			z-index:-1;
+		}
+		@keyframes bgchange{
+			from{
+				background-position:-150px;
+			}
+			to{
+				background-position:400px;
+			}
+		}
+		@-webkit-keyframes bgchange{
+			from{
+				background-position:-150px;
+			}
+			to{
+				background-position:600px;
+			}
+		}
+		.demo2{
+			margin:0 auto;
+			width:400px;
+			text-align:center;
+		}
+		.demo2 p{
+			background:-webkit-gradient(linear,0 0,100% 100%,from(#eee),color-stop(50%,#283dde),to(#000));
+			background:-moz-linear-gradient(top,#eee,#000);
+			-webkit-box-reflext:below 0 gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,0.4)));
+			box-reflext:below 0 -webkit-gradient(linear,left top,right bottom,from(transparent),to(rgba(0,0,0,0.4)));
+			-webkit-text-fill-color:transparent;
+			-webkit-background-clip:text;
+
+		}
+		.reflect{
+			display:block;
+			box-reflect:below -100px gradient(linear,0 100%,100% 100%,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
+			-webkit-box-reflect:below -100px  -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
+			-moz-box-reflect:below -100px  -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
+		}
+		.demo3{
+			  background: url(../img/video-box.png) no-repeat;
+			  width: 608px;
+			  height: 481px;
+			  padding-top: 26px;
+			  margin-left:0 auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo1">FlashWord</div>
+	<div class="demo2"><p>ImageReflect<p><img src="images/gw.jpg" alt="金州勇士" class="reflect"></div>
+	<div class="demo3">
+		<iframe src="https://secure.bilibili.com/secure,cid=3076766&amp;aid=1990998&amp;as_wide=1&amp;autoplay=1" allowtransparency="true" marginwidth="0" marginheight="0" align="top" scrolling="No" frameborder="0" hspace="0" vspace="0" style="width:99%;height:429px;margin:0 auto;display:block;">
+            </iframe>
+
+	 </div>
+	<script>
+	</script>
+</body>
+</html>
