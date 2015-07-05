@@ -2,119 +2,102 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>demoOne</title>
-	<style>
-		body{font-family:'Arial';}
-		.demo1{
-			font-size:80px;
-			font-weight:300;
-			color:#000;
-			background:-webkit-gradient(linear,left top,left bottom,from(#283dde),to(#292e22));
-			 background:-moz-linear-gradient(top, #283dde,#292e22);
-			width:400px;
-			position:relative;
-			-webkit-text-fill-color:transparent;
-			-webkit-background-clip:text;
-			margin:0 auto;
-		}
-		.demo1:before{
-			background-position:-150px;
-			content:'FlashWord';
-			animation:bgchange 4s infinite linear;
-			-webkit-animation:bgchange 4s infinite linear;
-			position:absolute;
-			color:#fff;
-			background-image:linear-gradient(65deg,transparent 20%,rgba(255,255,255,0.2) 20%,transparent 40%,rgba(255,255,255,0.3) 40%);
-			 -webkit-text-fill-color: transparent;
-			 -webkit-background-clip: text;
-		}
-		.demo1:after{
-			content:'FlashWord';
-			text-shadow:0 1px #dfdfdf,0 2px #dfdfdf,0 3px #dfdfdf,0 4px #dfdfdf,0 5px #dfdfdf;
-			color:#fff;
-			position:absolute;
-			left:0;
-			top:0;
-			z-index:-1;
-		}
-		@keyframes bgchange{
-			from{
-				background-position:-150px;
-			}
-			to{
-				background-position:400px;
-			}
-		}
-		@-webkit-keyframes bgchange{
-			from{
-				background-position:-150px;
-			}
-			to{
-				background-position:600px;
-			}
-		}
-		.demo2{
-			margin:0 auto;
-			width:400px;
-			text-align:center;
-		}
-		.demo2 p{
-			background:-webkit-gradient(linear,0 0,100% 100%,from(#eee),color-stop(50%,#283dde),to(#000));
-			background:-moz-linear-gradient(top,#eee,#000);
-			-webkit-box-reflext:below 0 gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,0.4)));
-			box-reflext:below 0 -webkit-gradient(linear,left top,right bottom,from(transparent),to(rgba(0,0,0,0.4)));
-			-webkit-text-fill-color:transparent;
-			-webkit-background-clip:text;
-
-		}
-		.reflect{
-			display:block;
-			box-reflect:below -100px gradient(linear,0 100%,100% 100%,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
-			-webkit-box-reflect:below -100px  -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
-			-moz-box-reflect:below -100px  -webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0)),to(rgba(255,255,255,0.3)));
-		}
-		.demo3{
-			  background: url(../img/video-box.png) no-repeat;
-			  width: 608px;
-			  height: 481px;
-			  padding-top: 26px;
-			  margin-left:0 auto;
-		}
-		h1{
-			cursor:pointer;
-		}
-	</style>
+	<title>slider</title>
+	<link href="dist/css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1><a href="javascript:0" onclick="">设为首页</a>|<a href="javascript:void(0)" onclick="join_favorite(window.location,document.title)"  title="wecandoitforev-baidujingyan">加入收藏</a></h1>
-	<div class="demo1">FlashWord</div>
-	<div class="demo2"><p>ImageReflect<p><img src="images/gw.jpg" alt="金州勇士" class="reflect"></div>
-	<div class="demo3">
-		<iframe src="https://secure.bilibili.com/secure,cid=3076766&amp;aid=1990998&amp;as_wide=1&amp;autoplay=1" allowtransparency="true" marginwidth="0" marginheight="0" align="top" scrolling="No" frameborder="0" hspace="0" vspace="0" style="width:99%;height:429px;margin:0 auto;display:block;">
-      </iframe>
+	<div class="slider">
+		<!-- 修改view成为template，增加template id -->
+		<div class="main" id="template_main">
+			<div class="main-i" id="main_{{index}}">
+				<div class="caption">
+					<h2>{{h2}}</h2>
+					<h3>{{h3}}</h3>
+				</div>
+				<img src="images/{{index}}.jpg" />
+			</div>
+		</div>
+		<div class="ctrl" id="template_ctrl">
+			<a href="javascript:;" onclick="switchSlider({{index}})" class="ctrl-i" id="ctrl_{{index}}">
+				<img src="images/{{index}}.jpg" />
+			</a>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//定义数据
+		var data=[
+		{img:1,h2:'Creative',h3:'DUET'},
+		{img:2,h2:'Friendly',h3:'DEVIL'},
+		{img:3,h2:'Tranquilent',h3:'COMPATRIOT'},
+		{img:4,h2:'Insecure',h3:'HUSSLER'},
+		{img:5,h2:'Loving',h3:'REBEL'},
+		{img:6,h2:'Passionate',h3:'SEEKER'},
+		{img:7,h2:'Crazy',h3:'FRIEND'}
+		]
+		//定义全局函数
+		function g(id){
+			if(id.substr(0,1)=='.'){
+				return document.getElementsByClassName(id.substr(1))
+			}
+			return document.getElementById(id)
+		}
+		//添加幻灯片操作
+		function addSlider(){
+			//先获取模版
+			var tpl_main=g("template_main").innerHTML
+							.replace(/^\s*/,'')
+							.replace(/\s*$/,'');
+			var tpl_ctrl=g("template_ctrl").innerHTML
+							.replace(/^\s*/,'')
+							.replace(/\s*$/,'');
+			//定义最终输出模版
+			var out_main=[];
+			var out_ctrl=[];
+			//遍历数据
+			for(var i=0;i<data.length;i++){
+				var _html_main=tpl_main
+						.replace(/{{index}}/g,data[i].img)
+						.replace(/{{h2}}/g,data[i].h2)
+						.replace(/{{h3}}/g,data[i].h3)
+				var _html_ctrl=tpl_ctrl
+						.replace(/{{index}}/g,data[i].img)
+				out_main.push(_html_main);
+				out_ctrl.push(_html_ctrl);
+			}
 
-	 </div>
-	<script>
-		function join_favorite(siteUrl, siteName){  
-		 //捕获加入收藏过程中的异常       
-		try{       
-		//判断浏览器是否支持document.all        
-		if(document.all){                     
-		//如果支持则用external方式加入收藏夹              
-		  window.external.addFavorite(siteUrl,siteName);                
-		 }
-		 else if(window.sidebar){                      
-		  //如果支持window.sidebar，则用下列方式加入收藏夹  
-		    window.sidebar.addPanel(siteName, siteUrl,'');         
-		       }          
-		     }  
-		 //处理异常       
-		catch (e){          
-		 alert("加入收藏夹失败，请使用Ctrl+D快捷键进行添加操作!");   
-		    }
+			//把html输出回到对应dom
+			g("template_main").innerHTML=out_main.join('');
+			g("template_ctrl").innerHTML=out_ctrl.join('');
 		}
 
+		//定义幻灯片切换函数
+		function switchSlider(n){
+			//获取要控制的幻灯片和按钮dom
+			var main=g('main_' + n );
+			var ctrl=g('ctrl_' + n );
 
+			//获得所有的幻灯片和按钮dom
+			var clear_main=g('.main-i');
+			var clear_ctrl=g('.ctrl-i');
+
+			//先清除所有active样式
+			for(var i=0;i<clear_main.length;i++){
+				clear_main[i].className=clear_main[i].className.replace('main-i_active','');
+				clear_ctrl[i].className=clear_ctrl[i].className.replace('ctrl-i_active','');
+			}
+
+			//为当前控制按钮和幻灯片添加样式
+			main.className+= ' main-i_active';
+			ctrl.className+= ' ctrl-i_active';
+			//添加样式样式名前加空格，否则多样式情况下会样式名重合，
+			//如"main-imain-i_active"
+		}
+
+		//定义页面加载完处理
+		window.onload=function(){
+			addSlider();
+			switchSlider(1);
+		}
 	</script>
 </body>
 </html>
