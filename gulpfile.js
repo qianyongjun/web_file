@@ -52,7 +52,7 @@ gulp.task('cssCompile', function(){
     compress: false,
         linenos: true
   }))
-  .pipe(gulp.dest('src/dist/css'))
+  .pipe(gulp.dest('src/css'))
 /*  .pipe(rename({suffix:'.min'}))
   .pipe(minifycss())
   .pipe(gulp.dest('src/dist/css'))*/
@@ -60,10 +60,7 @@ gulp.task('cssCompile', function(){
 });
 
 /**************************images***************************/
-  gulp.task('images',function(){
-    return gulp.src('src/images/**/*')
-      .pipe(gulp.dest('src/dist/images'))
-  })
+
 
 
 /*****************清除目的目录重建档案**********/

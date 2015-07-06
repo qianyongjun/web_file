@@ -4,13 +4,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 	<title>slider</title>
-	<link href="dist/css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="slider">
 		<!-- 修改view成为template，增加template id -->
 		<div class="main" id="template_main">
-			<div class="main-i" id="main_{{index}}">
+			<div class="main-i" id="main_{{index}}" onmouseover="stopPlay()" onmouseout="autoPlay()">
 				<div class="caption">
 					<h2>{{h2}}</h2>
 					<h3>{{h3}}</h3>
@@ -94,10 +94,29 @@
 			//如"main-imain-i_active"
 		}
 
+		//自动播放功能
+		var timer=null;
+		var i=1;
+		function autoPlay(){
+			timer=setInterval(function(){
+				i++;
+				switchSlider(i);
+				if(i>=data.length){
+					i=0;
+				}
+			},2000)
+		}
+
+		//关闭自动播放
+		function stopPlay(){
+			clearInterval(timer);
+		}
+
 		//定义页面加载完处理
 		window.onload=function(){
 			addSlider();
-			switchSlider(1);
+			switchSlider(1)
+			autoPlay();
 		}
 	</script>
 </body>
