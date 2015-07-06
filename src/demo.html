@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
 	<title>demoOne</title>
 	<style>
 		body{font-family:'Arial';}
@@ -78,7 +79,11 @@
 			  width: 608px;
 			  height: 481px;
 			  padding-top: 26px;
-			  margin-left:0 auto;
+			  margin:40px auto 0;
+		}
+		#demo{
+			border:1px solid #ddd;
+			box-shadow:0 0 5px rgba(81,203,238,1)
 		}
 	</style>
 </head>
@@ -87,10 +92,176 @@
 	<div class="demo2"><p>ImageReflect<p><img src="images/gw.jpg" alt="金州勇士" class="reflect"></div>
 	<div class="demo3">
 		<iframe src="https://secure.bilibili.com/secure,cid=3076766&amp;aid=1990998&amp;as_wide=1&amp;autoplay=1" allowtransparency="true" marginwidth="0" marginheight="0" align="top" scrolling="No" frameborder="0" hspace="0" vspace="0" style="width:99%;height:429px;margin:0 auto;display:block;">
-            </iframe>
-
-	 </div>
+             </iframe>
+	</div>
+	<canvas id="demo"></canvas>
 	<script>
+		function a(index){
+			var i=index;
+			function b(index){
+				var b=index;
+				function c(index){
+					var c=index;
+					c=i*b*c;
+					console.log(c);
+				}
+				return c;
+			}
+			return b;
+		}
+		a(1)(2)(3);
+		window.onload=function(){
+			var canvas=document.getElementById('demo');
+
+			canvas.width = 1500;
+			canvas.height = 1600;
+
+			var ctx=canvas.getContext('2d');
+			ctx.moveTo(10,10);
+			ctx.lineTo(30,40);
+			ctx.lineTo(10,70);
+
+			ctx.moveTo(30,10);
+			ctx.lineTo(50,40);
+			ctx.lineTo(30,70);
+
+			ctx.moveTo(50,10);
+			ctx.lineTo(70,40);
+			ctx.lineTo(50,70);
+
+			ctx.lineWidth=10;
+			ctx.lineJoin='round';
+			ctx.strokeStyle="#058"
+			ctx.stroke();
+			//绘制三条同色折线
+
+			ctx.lineWidth=10;
+
+			ctx.beginPath();
+			ctx.lineTo(10,80);
+			ctx.lineTo(30,110);
+			ctx.lineTo(10,140);
+			ctx.strokeStyle="blue";
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.lineTo(30,80);
+			ctx.lineTo(50,110);
+			ctx.lineTo(30,140);
+			ctx.strokeStyle="red";
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.lineTo(50,80);
+			ctx.lineTo(70,110);
+			ctx.lineTo(50,140);
+			ctx.strokeStyle="yellow";
+			ctx.stroke();
+			//绘制三条不同色折线,利用beginPath()改变绘制状态
+			//
+			//
+			//绘制箭头利用beginPath()和closePath()绘制封闭图形，利用fill()函数填充颜色;如果绘制描边带填充色图形，要先fill()，再stroke();
+
+			ctx.beginPath();
+			ctx.lineTo(100,200);
+			ctx.lineTo(300,200);
+			ctx.lineTo(300,150);
+			ctx.lineTo(400,250);
+			ctx.lineTo(300,350);
+			ctx.lineTo(300,300);
+			ctx.lineTo(100,300);
+			ctx.closePath();
+
+			ctx.strokeStyle="#058";
+			ctx.lineWidth=10;
+			ctx.fillStyle="yellow";
+
+			ctx.fill();
+			ctx.stroke();
+
+			//调用绘制函数
+			drawRect(ctx,400,400,50,50,10,'#de2d22','#af23fd');
+			drawAngle(ctx,500,200,50,50,10,'#af23fd','#058');
+
+			ctx.fillStyle="black";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			for(var i=0;i<100;i++){
+				var r=Math.random()*10+10;
+				var x=Math.random()*canvas.width;
+				var y=Math.random()*canvas.height;
+				var angle=parseInt(Math.random()*360);
+				drawStar(ctx,x,y,r,angle);
+			}
+		}
+		//定义绘制函数
+		function drawRect(ctx,x,y,width,height,borderWidth,borderColor,fillColor){
+			ctx.beginPath();
+			ctx.lineTo(x,y);
+			ctx.lineTo(x+width,y);
+			ctx.lineTo(x+width,y+height);
+			ctx.lineTo(x,y+height);
+			ctx.closePath();
+
+			ctx.strokeStyle=borderColor;
+			ctx.lineWidth=borderWidth;
+			ctx.fillStyle=fillColor;
+
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		function drawAngle(ctx,x,y,width,height,borderWidth,borderColor,fillColor){
+			ctx.beginPath();
+			ctx.lineTo(x,y);
+			ctx.lineTo(x+width,y);
+			ctx.lineTo(x+width,y+height);
+			ctx.lineTo(x+width*2,y+height);
+			ctx.lineTo(x+width*2,y+height*2);
+			ctx.lineTo(x,y+height*2);
+			ctx.closePath();
+
+			ctx.strokeStyle=borderColor;
+			ctx.lineWidth=borderWidth;
+			ctx.fillStyle=fillColor;
+
+			ctx.fill();
+			ctx.stroke();
+		}
+
+		function starPath(ctx){
+			//x,y位移量
+			ctx.beginPath();
+			for(var i=0;i<5;i++){
+				ctx.lineTo(Math.cos((18+i*72)/180*Math.PI),-Math.sin((18+i*72)/180*Math.PI));//大圆
+				ctx.lineTo(Math.cos((54+i*72)/180*Math.PI),-Math.sin((54+i*72)/180*Math.PI));//小圆
+			}
+			ctx.closePath();
+
+		}
+		//ctx.lineJoin  指定线条连接的接口形状，类型有"bevel","miter","round"
+
+		function drawStar(ctx,x,y,R,rot){
+
+			ctx.save();
+
+			ctx.translate(x,y);
+			ctx.rotate(rot/180*Math.PI);
+
+			starPath(ctx);
+
+			ctx.lineWidth=3;
+			ctx.lineJoin="round";
+			ctx.strokeStyle="#fd5"
+			ctx.fillStyle="#fb3"
+
+			ctx.fill();
+			ctx.stroke();
+
+			ctx.restore();
+
+		}
+		var t=document.querySelector('.demo1').offsetHeight;
+		document.querySelector('.demo2').style.height=t+'px';
 	</script>
 </body>
 </html>
