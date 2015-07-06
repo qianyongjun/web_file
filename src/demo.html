@@ -85,9 +85,13 @@
 			border:1px solid #ddd;
 			box-shadow:0 0 5px rgba(81,203,238,1)
 		}
+		h1{
+			cursor:pointer;
+		}
 	</style>
 </head>
 <body>
+	<h1><a href="javascript:0" onclick="">设为首页</a>|<a href="javascript:void(0)" onclick="join_favorite(window.location,document.title)"  title="wecandoitforev-baidujingyan">加入收藏</a></h1>
 	<div class="demo1">FlashWord</div>
 	<div class="demo2"><p>ImageReflect<p><img src="images/gw.jpg" alt="金州勇士" class="reflect"></div>
 	<div class="demo3">
@@ -262,6 +266,26 @@
 		}
 		var t=document.querySelector('.demo1').offsetHeight;
 		document.querySelector('.demo2').style.height=t+'px';
+	//加入收藏夹操作
+		function join_favorite(siteUrl, siteName){
+		 //捕获加入收藏过程中的异常
+		try{
+		//判断浏览器是否支持document.all
+		if(document.all){
+		//如果支持则用external方式加入收藏夹
+		  window.external.addFavorite(siteUrl,siteName);
+		 }
+		 else if(window.sidebar){
+		  //如果支持window.sidebar，则用下列方式加入收藏夹
+		    window.sidebar.addPanel(siteName, siteUrl,'');
+		       }
+		     }
+		 //处理异常
+		catch (e){
+		 alert("加入收藏夹失败，请使用Ctrl+D快捷键进行添加操作!");
+		    }
+		}
+
 	</script>
 </body>
 </html>
