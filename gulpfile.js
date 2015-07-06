@@ -47,7 +47,7 @@ gulp.task('default', ['styles', 'watch']);**/
 
 /****************************编译stylus**************************/
 gulp.task('cssCompile', function(){
-  gulp.src(['src/stylus/*'])
+  return gulp.src(['src/stylus/*'])
   .pipe(stylus({
     compress: false,
         linenos: true
@@ -83,5 +83,5 @@ gulp.task('watch', function() {
 
 /******************  task  *********************/
 gulp.task('default',function(){
-    runSequence('clean','browser-sync','watch')
+    runSequence('clean','browser-sync','cssCompile','watch')
 });  //顺序尽量和watch一致，且要html在css前
