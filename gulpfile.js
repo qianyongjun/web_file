@@ -52,7 +52,7 @@ gulp.task('cssCompile', function(){
     compress: false,
         linenos: true
   }))
-  .pipe(gulp.dest('src/dist/css'))
+  .pipe(gulp.dest('src/css'))
 /*  .pipe(rename({suffix:'.min'}))
   .pipe(minifycss())
   .pipe(gulp.dest('src/dist/css'))*/
@@ -68,7 +68,7 @@ gulp.task('cssCompile', function(){
 
 /*****************清除目的目录重建档案**********/
 gulp.task('clean', function() {
-  return gulp.src(['src/dist/css', 'src/dist/js'], {read: false})
+  return gulp.src(['src/css'/*, 'src/dist/js'*/], {read: false})
     .pipe(clean());
 });
 
