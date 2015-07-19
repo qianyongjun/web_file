@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<style type="text/css">
+    *{ margin:0; padding:0;}
+    ul,ul li{ list-style:none;}   
+    .wrap{ width:1000px; margin:50px auto;}   
+    .box1,.box2,.box3{ overflow:hidden; float:left;border:1px solid gray;}   
+    .box1{ width:200px; height:450px;}
+    .box1 ul li{ width:200px; height:100px;}  
+    .box2,.box3{ width:450px;height:150px; margin:40px;}
+    .box2 ul li,.box3 ul li{ width:100px; height:150px; float:left;}
+    
+</style>
+</head>
+ 
+<body>
+<div class="wrap">
+ 
+    <div class="box1">
+        <ul>
+            <li>111纵向</li>
+            <li>222纵向</li>
+            <li>333纵向</li>
+            <li>444纵向</li>
+            <li>555纵向</li>
+            <li>666纵向</li>
+        </ul>
+    </div>
+ 
+    <div class="box2">
+        <ul>
+            <li>111横向</li>
+            <li>222横向</li>
+            <li>333横向</li>
+            <li>444横向</li>
+            <li>555横向</li>
+            <li>666横向</li>
+        </ul>
+    </div>  
+    
+    <div class="box3">   
+        <ul>
+            <li>ul长度小于box长度，不滚动</li>
+            <li>222横向</li>
+            <li>333横向</li>           
+        </ul>
+    </div>    
+</div>
+ 
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $.fn.Scroll = function (options) {
+        //将当前上下文对象存入root
+        var root = this;
+ 
+        //默认配置
+        var settings = {
+            speed: 40,      //滚动速度,值越大速度越慢
+            direction: "x"  //滚动方向("x"或者"y" [x横向;y纵向])
+        };
+ 
+        //不为空，则合并参数
+        if (options)
+            $.extend(settings, options);
+ 
+ 
+        var timer = [];     //计时器
+        var marquee;        //滚动器(函数)
+        var isRoll;         //判断是否滚动(函数)
+ 
+        var _ul = $("> ul", root);          //ul标签
+        var _li = $("> ul > li", root);     //li标签(集合)
+ 
+        var li_num = _li.length;    //li标签个数
+        var li_first = _li.first();   //获取单个li标签
+ 
+ 
+        //判断为纵向还是横向，并进行相应操作
+        if (settings.direction == "x") {
+　　　　　　　
+　　　　　　 var li_w = li_first.outerWidth(true); //单个li标签的宽度
+　　　　　　 var ul_w = li_w * li_num; 　　　　　　 //ul标签的宽度
+ 
+            _ul.css({ width: ul_w }); //设置ul宽度
+ 
+            marquee = function () {
+                _ul.animate({ marginLeft: "-=1" }, 0, function () {
+                    var _mleft = Math.abs(parseInt($(this).css("margin-left")));
+                    if (_mleft > li_w) { //滚动长度一旦大于单个li的长度
+                        $("> li:first", $(this)).appendTo($(this)); //就把第一个li移到最后
+                        $(this).css("margin-left", 0); //滚动长度归0
+                    }
+                });
+            };
+            //ul长度小于box长度时则不滚动，反之滚动
+            isRoll = function (t) {
+                if (ul_w <= root.width())
+                    clearInterval(t);
+                else
+                    marquee();
+            }
+        }
+        else {
+　　　　　　 var li_h = li_first.outerHeight(true); //单个li标签的高度 
+　　　　　　 var ul_h = li_h * li_num; //ul标签的高度
+ 
+            _ul.css({ height: ul_h });  //设置ul高度
+ 
+            marquee = function () {
+                _ul.animate({ marginTop: "-=1" }, 0, function () {
+                    var _mtop = Math.abs(parseInt($(this).css("margin-top"))); //取绝对值
+                    if (_mtop > li_h) { 
+                        $("> li:first", $(this)).appendTo($(this));
+                        $(this).css("margin-top", 0);
+                    }
+                });
+            };
+            //ul长度小于box长度时则不滚动，反之滚动
+            isRoll = function (t) {
+                if (ul_h <= root.height())
+                    clearInterval(t);
+                else
+                    marquee();
+            }
+        }
+ 
+        //遵循链式原则，并进行初始化
+        return root.each(function (i) {
+            //超出内容隐藏，防止用户没写overflow样式
+            $(this).css({ overflow: "hidden" });
+ 
+            timer[i] = setInterval(function () {
+                isRoll(timer[i]);
+            }, settings.speed);
+ 
+            //鼠标进入停止滚动，离开继续滚动
+            $(this).hover(function () {
+                clearInterval(timer[i]);
+            }, function () {
+                timer[i] = setInterval(function () {
+                    isRoll(timer[i]);
+                }, settings.speed);
+            });
+ 
+        });
+ 
+    };
+})
+    
+
+    $(function () {
+        //奇数背景设置为灰色
+        $('.box1 li:even,.box2 li:even,.box3 li:even').css({ backgroundColor: "gray" });
+ 
+        $(".box1").Scroll({ direction: "y" }); //设置为纵向滚动
+        $(".box2").Scroll(); //默认横向滚动
+        $(".box3").Scroll();
+    });
+</script>
+</body>
+</html>
