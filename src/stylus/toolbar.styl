@@ -1,0 +1,64 @@
+@charset "UTF-8"
+$toolbar-size = 52px
+opacity(opacity)
+	opacity opacity
+	filter unquote('alpha(opacity=opacity*100)')
+ul,li,ol,dl,dt,dd
+	list-style-type none
+.toolbar
+	position fixed
+	left 50%
+	bottom 50%
+	ul li
+		display block
+		.toolbar-item
+			display block
+			width $toolbar-size
+			height $toolbar-size
+			background url('/images/toolbar.png') no-repeat
+			margin-top 1px
+			position relative
+			transition all .4s linear
+		.toolbar-item-weixin
+			background-position 0 -798px
+		.toolbar-item-feedback
+			background-position 0 -426px
+		.toolbar-item-app
+			background-position 0 -550px
+		.toolbar-item-top
+			background-position 0 -674px
+		.toolbar-item:before
+			@extends .toolbar ul li .toolbar-item
+			content ' '
+			position absolute
+			top 0
+			left 0
+			opacity(0)
+		.toolbar-item-weixin:before
+			background-position 0 -860px
+		.toolbar-item-feedback:before
+			background-position 0 -488px
+		.toolbar-item-app:before
+			background-position 0 -612px
+		.toolbar-item-top:before
+			background-position 0 -736px
+		.toolbar-item:hover:before
+			opacity(1)
+		.toolbar-item:after
+			display block
+			width 172px
+			background url('/images/toolbar.png') no-repeat
+			position absolute
+			right $toolbar-size - 6
+			bottom -10px
+			transition all .4s linear
+			content ' '
+			transform scale(0)
+		.toolbar-layer-public:after
+			background-position 0 0
+			height 212px
+		.toolbar-layer-mobile:after
+			background-position 0 -222px
+			height 194px
+		.toolbar-item:hover:after
+			transform scale(1)

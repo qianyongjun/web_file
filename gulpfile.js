@@ -60,10 +60,10 @@ gulp.task('cssCompile', function(){
 });
 
 /**************************images***************************/
-  gulp.task('images',function(){
-    return gulp.src('src/images/**/*')
-      .pipe(gulp.dest('src/dist/images'))
-  })
+gulp.task('images',function(){
+  return gulp.src(['src/images/*'])
+  .pipe(gulp.dest('src/img'))
+})
 
 
 /*****************清除目的目录重建档案**********/
