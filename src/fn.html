@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+@font-face {font-family: "iconfont";
+  src: url('font/iconfont.eot'); /* IE9*/
+  src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('font/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-locationfill:before { content: "\e650"; }
+.icon-loading:before { content: "\e64f"; }
+.icon-edit:before { content: "\e649"; }
+.icon-close:before { content: "\e646"; }
+.icon-check:before { content: "\e645"; }
+.icon-appreciate:before { content: "\e644"; }
+.icon-location:before { content: "\e651"; }
+.icon-phone:before { content: "\e652"; }
+.icon-roundcheck:before { content: "\e657"; }
+.icon-roundclose:before { content: "\e659"; }
+.icon-emoji:before { content: "\e64a"; }
+.icon-roundright:before { content: "\e65b"; }
+.icon-search:before { content: "\e65c"; }
+.icon-camera:before { content: "\e665"; }
+.icon-warn:before { content: "\e663"; }
+.icon-unfold:before { content: "\e661"; }
+.icon-time:before { content: "\e65f"; }
+.icon-taxi:before { content: "\e65d"; }
+.icon-comment:before { content: "\e667"; }
+.icon-like:before { content: "\e669"; }
+.icon-notification:before { content: "\e66b"; }
+.icon-order:before { content: "\e66c"; }
+.icon-same:before { content: "\e66e"; }
+.icon-deliver:before { content: "\e671"; }
+.icon-cascades:before { content: "\e67c"; }
+.icon-back:before { content: "\e679"; }
+.icon-wang:before { content: "\e678"; }
+.icon-list:before { content: "\e682"; }
+.icon-question:before { content: "\e691"; }
+.icon-settings:before { content: "\e68a"; }
+.icon-top:before { content: "\e69e"; }
+.icon-pulldown:before { content: "\e69f"; }
+.icon-pullup:before { content: "\e6a0"; }
+.icon-right:before { content: "\e6a3"; }
+.icon-delete:before { content: "\e6b4"; }
+.icon-weibo:before { content: "\e6c4"; }
+
+	</style>
+</head>
+<body>
+<p id="dd">16</p>
+
+<i class="icon-weibo iconfont"></i>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+	$(function(){
+		$.extend({
+			add:function(a,b){
+				return a+b
+			}
+		})
+		var t=$.add(2,3)
+		console.log(t);
+
+
+		$.fn.addd=function(a,b){
+			return parseInt($(this).html(),16)+a+b;
+		}
+		console.log($('#dd').addd(2,3));
+	})
+
+</script>
+</body>
+</html>

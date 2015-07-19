@@ -42,7 +42,10 @@ a:focus{outline:none;}
 .brand-list .item p{margin-bottom: 15px;}</style>
 </head>
 <body>
-
+<form action="demo_form.asp" method="get" autocomplete="on">
+    <input type="text"  />
+    <input type="submit" />
+</form>
 <div id="wrapper">
 <!-- 品牌列表开始 -->
   <div class="brand-list">
@@ -168,13 +171,9 @@ a:focus{outline:none;}
   <!-- 品牌列表 end -->
 </div>
 <script id="jquery_183" type="text/javascript" class="library" src="js/jquery-2.1.4.min.js"></script>
-        
-                <script>
-
+<script>
 $(function(){
-  
-
-$('#brand-waterfall').waterfall();
+    $('#brand-waterfall').waterfall();
 });
 
 
