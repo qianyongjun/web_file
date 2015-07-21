@@ -27,7 +27,7 @@ table{border-collapse:collapse;border-spacing:0;}
 a{text-decoration:none; color:#333; -webkit-transition: color .2s;-moz-transition: color .2s;-o-transition: color .2s; -ms-transition: color .2s;transition: color .2s;}
 a:hover{text-decoration:underline; color: #ff7d8e;}
 a:focus{outline:none;}
-::selection {background:#ff7d8e; color:#fff;} 
+::selection {background:#ff7d8e; color:#fff;}
 
 
 #wrapper{width: 1008px; margin: 15px auto;}
@@ -199,7 +199,7 @@ $(function(){
                 var i = 0;
                 for (; i < _num; i++) {
                     pos.push([i*_owidth,0]);
-                } 
+                }
             })();
 
             $items.each(function() {
@@ -257,6 +257,9 @@ $(function(){
 
         });
     }
-})(jQuery);</script>
+})(jQuery);
+
+ console.log($('h3',$('.item')))
+</script>
 </body>
 </html>

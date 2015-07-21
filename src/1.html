@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.test >:last-child{color:red;}
+	.a{ font:12px arial; }
+	p{ line-height:2; }
+	</style>
+</head>
+<body>
+<p class="a">1</p>
+<script id="tpl" type="text/template">
+<div class="demo">
+	<h1>{{title}}</h1>
+	<p>{{content.title}}</p>
+	<ul>
+	{{#htht}}
+		<li>{{language}}</li>
+	{{/htht}}
+	</ul>
+	{{#each name}}
+		<p>{{this}}</p>
+	{{/each}}
+	{{#if list}}
+		<ul id="list">
+		{{#each list}}
+			<li>{{this}}</li>
+		{{/each}}
+		</ul>
+	{{else}}
+		<p>{{error}}</p>
+	{{/if}}
+	{{#unless list}}
+		<ul id="list">
+		{{#each info}}
+			<li>{{this}}</li>
+		{{/each}}
+		</ul>
+	{{else}}
+		<p>{{error}}</p>
+	{{/unless}}
+	<h3>{{author.id}}</h3>
+	<h1>{{fun}}</h1>
+	{{#ath}}
+		<h2>By {{first}}{{last}}</h2>
+	{{/ath}}
+	{{#with person}}
+	    <h1>{{../company.name}}</h1>
+	{{/with}}
+	<div class="test">
+		<div>
+			<div>11</div>
+		</div>
+		<div>22</div>
+	</div>
+	<div class="test">33</div>
+</div>
+</script>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars.js"></script>
+<script>
+	var tpl=$('#tpl').html();
+    var template = Handlebars.compile(tpl);
+	var json={
+		title:'jaja',
+		content:{title:'jass',
+		name:'ddd'},
+		all:[
+			{htht:'shs'},
+			{programme:[
+				{language:'english'},
+				{language:'chinese'},
+				{language:'russian'},
+				{language:'franse'},
+				{language:'germany'}
+			]}
+		],
+		name:['html','css','javascript'],
+		info:['title','test','lili'],
+		error:'数据取出错误',
+		author:{
+			id:'huhi',
+			name:'etrae'
+		},
+		fun:'my first post',
+		ath:{
+			first:'lili',
+			last:'lolo'
+		}
+	};
+	var data={
+		"all":0,
+		"htht":[
+			{'language':'lili'},
+			{'language':'lili'},
+			{'language':'lili'},
+			{'language':'lili'},
+			{'language':'lili'},
+			{'language':'lili'}
+		]
+	}
+	var html=template(data);
+	$('body').html(html);
+</script>
+</body>
+</html>

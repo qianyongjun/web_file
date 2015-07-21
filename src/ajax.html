@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+</head>
+<body>
+<input type="text"  onkeyup="showHint(this.value)" />
+<p>suggestion：<span id="ajaxCt"></span><p>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+	/*function ajaxInfo(){
+		$.ajax({
+			type:'GET',
+			url:'ajax.json',
+			data:{},
+			dataType:"json",
+			success:function(data){
+				data=JSON.parse(data)
+				if(data.status==0){
+					$('#myAjax').html(data.responseText.name+data.responseText.content);
+				}
+			}
+		})
+	}*/
+
+
+	function showHint(str){
+		var xmlhttp;
+		if(str.length==0){
+			document.getElementById('ajaxCt').innerHTML="";
+		}
+		if(window.XMLHttpRequest){
+			xmlhttp=new XMLHttpRequest();
+		}
+		else{
+			xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState==4&&xmlhttp.status==200){
+				document.getElementById('ajaxCt').innerHTML=JSON.parse(xmlhttp.responseText).responseText.name;
+			}
+		};
+		xmlhttp.open("GET","ajax.json",true);
+		xmlhttp.send();
+	}
+</script>
+</body>
+</html>

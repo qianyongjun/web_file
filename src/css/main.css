@@ -1,18 +1,18 @@
 
-/* line 94 : D:\web_file\src\stylus\main.styl */
+/* line 286 : F:\web_file\src\stylus\main.styl */
 
-/* line 1 : D:\web_file\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
+/* line 1 : F:\web_file\node_modules\gulp-stylus\node_modules\stylus\lib\functions\index.styl */
 
-/* line 1 : D:\web_file\src\stylus\main.styl */
+/* line 1 : F:\web_file\src\stylus\main.styl */
 @charset "utf-8";
 
-/* line 2 : D:\web_file\src\stylus\main.styl */
+/* line 2 : F:\web_file\src\stylus\main.styl */
 html {
   font-size: 12px;
   font-family: '微软雅黑', 'Arial', 'sns-serif';
 }
 
-/* line 5 : D:\web_file\src\stylus\main.styl */
+/* line 5 : F:\web_file\src\stylus\main.styl */
 ul,
 ol,
 li,
@@ -22,12 +22,12 @@ dd {
   list-style-type: none;
 }
 
-/* line 7 : D:\web_file\src\stylus\main.styl */
+/* line 7 : F:\web_file\src\stylus\main.styl */
 a {
   text-decoration: none;
 }
 
-/* line 9 : D:\web_file\src\stylus\main.styl */
+/* line 9 : F:\web_file\src\stylus\main.styl */
 body,
 div,
 h1,
@@ -51,14 +51,14 @@ table {
   padding: 0;
 }
 
-/* line 12 : D:\web_file\src\stylus\main.styl */
+/* line 12 : F:\web_file\src\stylus\main.styl */
 body {
   padding: 50px 0;
   color: #555;
   -webkit-font-smoothing: antialiased;
 }
 
-/* line 18 : D:\web_file\src\stylus\main.styl */
+/* line 18 : F:\web_file\src\stylus\main.styl */
 .slider,
 .main,
 .main-i {
@@ -67,14 +67,14 @@ body {
   position: relative;
 }
 
-/* line 22 : D:\web_file\src\stylus\main.styl */
+/* line 22 : F:\web_file\src\stylus\main.styl */
 
-/* line 23 : D:\web_file\src\stylus\main.styl */
+/* line 23 : F:\web_file\src\stylus\main.styl */
 .slider .main {
   overflow: hidden;
 }
 
-/* line 25 : D:\web_file\src\stylus\main.styl */
+/* line 25 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i {
   opacity: 0;
   position: absolute;
@@ -82,7 +82,7 @@ body {
   top: 0;
 }
 
-/* line 30 : D:\web_file\src\stylus\main.styl */
+/* line 30 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i img {
   width: 100%;
   position: absolute;
@@ -90,7 +90,7 @@ body {
   left: 0;
 }
 
-/* line 35 : D:\web_file\src\stylus\main.styl */
+/* line 35 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i .caption {
   position: absolute;
   z-index: 10;
@@ -98,7 +98,7 @@ body {
   right: 60%;
 }
 
-/* line 40 : D:\web_file\src\stylus\main.styl */
+/* line 40 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i .caption h2 {
   font-size: 40px;
   line-height: 50px;
@@ -107,7 +107,7 @@ body {
   margin-right: 45px;
 }
 
-/* line 46 : D:\web_file\src\stylus\main.styl */
+/* line 46 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i .caption h3 {
   font-size: 70px;
   line-height: 70px;
@@ -117,23 +117,23 @@ body {
   margin-right: -45px;
 }
 
-/* line 53 : D:\web_file\src\stylus\main.styl */
+/* line 53 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i_active {
   opacity: 1;
   right: 0;
   transition: all 0.6s;
 }
 
-/* line 57 : D:\web_file\src\stylus\main.styl */
+/* line 57 : F:\web_file\src\stylus\main.styl */
 
-/* line 58 : D:\web_file\src\stylus\main.styl */
+/* line 58 : F:\web_file\src\stylus\main.styl */
 .slider .main .main-i_active .caption h2,
 .slider .main .main-i_active .caption h3 {
   margin-right: 0;
   transition: all 0.9s 0.6s;
 }
 
-/* line 61 : D:\web_file\src\stylus\main.styl */
+/* line 61 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl {
   width: 100%;
   height: 13px;
@@ -144,7 +144,7 @@ body {
   bottom: -13px;
 }
 
-/* line 69 : D:\web_file\src\stylus\main.styl */
+/* line 69 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i {
   display: inline-block;
   width: 150px;
@@ -155,7 +155,7 @@ body {
   margin-left: 1px;
 }
 
-/* line 77 : D:\web_file\src\stylus\main.styl */
+/* line 77 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i img {
   width: 100%;
   position: absolute;
@@ -164,12 +164,12 @@ body {
   opacity: 0;
 }
 
-/* line 83 : D:\web_file\src\stylus\main.styl */
+/* line 83 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i:hover {
   background-color: #f0f0f0;
 }
 
-/* line 85 : D:\web_file\src\stylus\main.styl */
+/* line 85 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i:hover img {
   bottom: 13px;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.3)));
@@ -177,15 +177,15 @@ body {
   transition: all 0.6s;
 }
 
-/* line 90 : D:\web_file\src\stylus\main.styl */
+/* line 90 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i_active,
 .slider .ctrl .ctrl-i_active:hover {
   background-color: #000;
 }
 
-/* line 92 : D:\web_file\src\stylus\main.styl */
+/* line 92 : F:\web_file\src\stylus\main.styl */
 
-/* line 93 : D:\web_file\src\stylus\main.styl */
+/* line 93 : F:\web_file\src\stylus\main.styl */
 .slider .ctrl .ctrl-i_active:hover img {
   opacity: 0;
 }

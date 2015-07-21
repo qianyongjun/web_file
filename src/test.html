@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+
+.a{ width:200px; height:100px;}
+.b{ padding:20%; background-color:red; }
+	</style>
+</head>
+<body>
+<div class="a"><div class="b"></div></div>
+<div>
+    <input type="text" name="val">
+    <input  type="button" value="dianji" id="sub">
+    <div id="dd"><ul id="dd"></ul></div>
+</div>
+	<script>
+        var a=document.querySelector('[name="val"]');
+        console.log(a);
+        var b=document.querySelector('#sub');
+        b.onclick=function(){
+            var c=document.querySelector('#dd').children;
+            var l=document.createElement('li');
+            l.innerHTML=a.value;
+            c[0].appendChild(l);
+        }
+/*	var t=document.getElementsByClassName('.a')
+	var a=0;
+	var b={};
+
+	console.log(b==undefined)
+
+	console.log(a);
+	console.log(b)
+
+	var a=1;
+(function(){
+    alert(a);
+    var a=2;
+    alert(a);
+})();
+
+	(function(callback){
+	    president ={name:"bush"};
+	    alert(callback(president));
+	})(function(obj){
+	    obj.name ="obama";
+	    obj ={name:"clinton"};
+	})
+
+	var foo={
+       bar:function(){
+            alert(this);
+       }
+ };
+(foo.bar)();
+(foo.bar,foo.bar)();
+(foo.bar=foo.bar)();*/
+
+var A=1;
+(function A(){
+    A=2;
+    alert(A);
+    delete A;
+    alert(A);
+})();
+
+console.log( []+(-~{}-~{}-~{}-~{})+(-~{}-~{}) )
+console.log([]+(-~{}-~{}-~{}-~{}))
+
+var o={
+      x: 10,
+      foo: function () {
+             with (this) {
+                    function bar() {
+                         alert(x);
+                         alert(this.x);
+                    }
+                    var x=20;
+                    (function() {
+                          bar();
+                    })();
+                    bar.call(this);
+              }
+       }
+}
+o.foo();
+	</script>
+</body>
+</html>

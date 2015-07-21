@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js method</title>
+</head>
+<body>
+
+
+
+
+<script type="text/javascript">
+Function.prototype.method=function(name,func){
+	this.prototype[name]=func;
+	return this;
+};
+//把html中实体字符替换为对应字符
+/*String.method('deentityify',function(){
+	var entity={
+		quot:'"',
+		lt:'<',
+		gt:'>'
+	}
+	//返回deentityify方法
+	return funciton(){
+		return this.replace(/&([^&;]+);/g,
+			function(a,b){
+				var r=entity[b];
+				return typeof r==="string"?r:a;
+			}
+		);
+	};
+}());
+document.write("&lt;quot;&gt;".deentityify())*/
+
+function showDate(){
+	var day=new Date();
+	var d=new Date().getDay();
+	var h=day.getHours();
+	var m=day.getMinutes();
+	var s=day.getSeconds();
+	switch(d){
+		case 0:
+			x="Today it's Sunday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 1:
+			x="Today it's Monday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 2:
+			x="Today it's Tuesday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 3:
+			x="Today it's Wednesday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 4:
+			x="Today it's Thursday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 5:
+			x="Today it's Friday"+h+'时'+m+'分'+s+'秒'
+			break;
+		case 6:
+			x="Today it's Saturday"+h+'时'+m+'分'+s+'秒'
+			break;
+	}
+	document.getElementsByTagName('body')[0].innerHTML=x;
+}
+var timer;
+timer=setInterval(function(){showDate()},1000)
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+	<title>h5 Game</title>
+	<link rel="stylesheet" href="css/h5game.css" type="text/css">
+</head>
+<body>
+<div class="game-wrap">
+	<div class="page hide" id="loading">
+		<div class="loading-txt">
+			加载中。。。
+		</div>
+	</div>
+	<div class="page hide" id="index" style="display:block">
+		<h1>看你有多色</h1>
+		<div class="intro">找出所有色块里颜色不同的一个</div>
+		<div class="btns">
+			<button data-type="1" class="btn btn-play">普通模式</button>
+			<button data-type="2" class="btn btn-play btn-new">双飞模式</button>
+		</div>
+	</div>
+	<div class="page hide" id="main">
+		<header>
+			<span class="score">得分：<em>1</em></span>
+			<span class="time"></span>
+			<span class="btn"></span>
+		</header>
+		<div>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<div class="page hide" id="dialog">
+		<div class="inner">
+			<div class="content gameover">
+				<div class="inner-content">
+					<h3>瞎子lv1</h3>
+					<div class="clearfix">
+						<button>双飞场</button>
+						<button>重来</button>
+					</div>
+					<a href="">更多游戏</a>
+				</div>
+			</div>
+			<div class="content pause">
+				<div class="inner-content">
+					<h3>游戏暂停</h3>
+					<div class="clearfix">
+						<button>继续</button>
+						<button>重来</button>
+					</div>
+					<a href="">更多游戏</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</div>
+
+</body>
+</html>
